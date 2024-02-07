@@ -1,0 +1,16 @@
+<!-- repo-list.component.html -->
+<div *ngIf="repositories.length > 0; else noRepositories" class="mt-8">
+  <ul class="divide-y divide-gray-200">
+    <li *ngFor="let repo of repositories" class="py-4">
+      <div class="text-xl font-semibold">{{ repo.name }}</div>
+      <div *ngIf="repo.description" class="text-gray-600">{{ repo.description }}</div>
+      <div *ngIf="repo.topics && repo.topics.length > 0" class="mt-2">
+        Topics: <span *ngFor="let topic of repo.topics" class="inline-block bg-gray-200 text-gray-800 px-2 py-1 rounded-md mr-2">{{ repo.topics.join(', ') }}</span>
+      </div>
+    </li>
+  </ul>
+</div>
+<ng-template #noRepositories>
+  <p class="mt-8 text-gray-600">No repositories found.</p>
+</ng-template>
+
